@@ -1,9 +1,9 @@
 |ID|Title|Priority|Risk Rationale|Steps|Expected Results|
 |---|---|---| --- | --- | --- |
 |1|UI review|Med|High impact on user satisfaction|Open test app web page|Check that all necessary UI elements are present and match the design (place, size, color)|
-|2||||||
-|3||||||
-|4||||||
-|5||||||
+|2|Testing the match list|High|Covers GET All matches API and correct display of data on the UI |Check match list|1. Match list contains only upcoming football matches.<br>2. Each match shows: home team vs away team; kickoff date/time label; three selectable odds buttons: 1,X,2.<br>3. For any match check that displayed data corresponds with data returned by "matches" request in Dev tool.<br>4. The list is sorted in ascending date order|
+|3|Testing the balance|High|Covers GET Current balance API correct display of data on the UI|Check user's balance|1. Balance is in EUR.<br>2. The value matches what was returned by "balance" request in Dev tool.|
+|4|Match selection|Med|Checking the correctness of the match selection for betting|1. Press one of the buttons 1,X,2 for any match.<br>2. Select an another button for the match.<br>3. Remove selection by pressing "x".|1. Bet Slip shows active selection (match, winner, odds), Stake (0.00), available balance, Potential Payout, including: "Place Bet" (disabled), Remove all, per-selection remove (x).<br>2. Selecting a new odds button replaces the previous selection.<br>3. The selection is removed, Bet Slip is empty.|
+|5|Stake validation|Med|Checking the correctness of the Stake input field validation|1. Select any odds button for any match. Enter 0.99 in Stake field.<br>2. Enter 100.01 in Stake field.<br>3. Reduce the user's balance below 100 EUR and enter 100 in Stake field. |1. There is an error "Minimum stake is €1.00". "Place Bet" button is disabled.<br>2. There is an error "Maximum stake is €100.00". "Place Bet" button is disabled.<br>3. There is an error "Insufficient balance". "Place Bet" button is disabled. |
 |6||||||
 |7||||||
