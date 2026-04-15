@@ -6,7 +6,10 @@
 |4|Place a bet API returns incorrect currency|Low|Place a bet and check place-bet response in Dev tool.|place-bet response shows "currency": "EUR" - **FAIL: response shows "currency": "USD"**|Probably the system stores incorrect currency.|![API returns currency USD](img/currency.jpg "API returns currency USD")|6|
 |5|Match list contains past and current matches|High|Open test app web page|Match list contains only upcoming football matches - **FAIL: the match list contains past and current matches.** GET all matches API returns this incorrect list.|This allows the user to bet on past matches, which violates the main business scenario.|Match list in UI and API response:<br>![Past matches in the match list](img/UI_API_response.jpg "Past matches in the match list")|2|
 |6|Match list should be sorted by date|Med|Open test app web page|Matches are sorted by ascending date - **FAIL: the matches are not sorted correctly**|It's inconvenient to search for the desired match in the list.|Matches are sorted incorrectly:<br>![Incorrect match sorting](img/match_sort.jpg "Incorrect match sorting") |2|
-|7||||||||
-|8||||||||
-|9||||||||
-|6||||||||
+|7|Bet Slip does not display available balance duiring active selection|Med|Press one of the buttons 1,X,2 for any match.|Bet Slip displays available balance - **FAIL: the "Remove all" button replaced available balance.**|Uncomfortable while betting|Bet Slip before selection:<br>![Available balance is present](img/bet_slip_1.jpg "Available balance is present")<br>Bet Slip after selection:<br>!["Remove all" is instead of available balance](img/bet_slip_2.jpg "Remove all is instead of available balance")|4|
+|8|The match counter does not work when applying filters.|Med|Open test app web page. Apply filter by date or/and odds.|The match counter changed according to applied filter - **FAIL: the match counter always shows 103 matches**|No impact on business, only misleads the user.||7|
+
+<u>There are 2 mistakes in Functional spec:</u>
+1. In 3. Business Rules: Stake min €1.00. But in 4.1 Stake Validation (UI and API): Minimum €1.01
+2. In 2.1 Match List: Each match shows - kickoff date/time label. But in 5.3 Endpoints GET /api/matches: kickoffDate: string ( YYYY-MM-DD ) (without time). So, it's unclear what is exactly upcoming match, the comparison should be done by date and time or by date only. 
+
