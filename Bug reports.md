@@ -4,5 +4,9 @@
 |2|Incorrect timestamp on modal window|Low|1. Make a selection, enter stake and press "Place Bet" button.<br>2. Check timestamp on the Success Receipt|1. Success Receipt is displayed.<br>2. Betting timestamp has format "current_date time" - **FAIL: Betting timestamp is shown like "Today, 06:51 PM"** |It is more clear for user to use "current date/time" instead of "today".|![Betting timestamp](img/timestamp.jpg "Betting timestamp")|6|
 |3|User's balance is not updated after betting without refresh the page.|Med|1. Place a bet.<br>2. Close the Success Receipt and check user's balance.|2. The user's balance decreases by the staked amount - **FAIL: user's balance is not changed**. It is necessary to refresh the page to update the balance.|User inconvenience. Backend load increases due to additional requests.|Place a bet API returns updated balance to the UI:<br>![User's updated balance](img/balance.jpg "User's updated balance")|6|
 |4|Place a bet API returns incorrect currency|Low|Place a bet and check place-bet response in Dev tool.|place-bet response shows "currency": "EUR" - **FAIL: response shows "currency": "USD"**|Probably the system stores incorrect currency.|![API returns currency USD](img/currency.jpg "API returns currency USD")|6|
-|5||||||||
+|5|Match list contains past and current matches|High|Open test app web page|Match list contains only upcoming football matches - **FAIL: the match list contains past and current matches.** GET all matches API returns this incorrect list.|This allows the user to bet on past matches, which violates the main business scenario.|Match list in UI and API response:<br>![Past matches in the match list](img/UI_API_response.jpg "Past matches in the match list")|2|
+|6|Match list should be sorted by date|Med|Open test app web page|Matches are sorted by ascending date - **FAIL: the matches are not sorted correctly**|It's inconvenient to search for the desired match in the list.|Matches are sorted incorrectly:<br>![Incorrect match sorting](img/match_sort.jpg "Incorrect match sorting") |2|
+|7||||||||
+|8||||||||
+|9||||||||
 |6||||||||
