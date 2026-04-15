@@ -7,3 +7,12 @@
 |5|Stake validation|Med|Checking the correctness of the Stake input field validation|1. Select any odds button for any match. Enter 0.99 in Stake field.<br>2. Enter 100.01 in Stake field.<br>3. Reduce the user's balance below 100 EUR and enter 100 in Stake field.<br>4. Enter stake without decimal/with 1 decimal/with 2 decimal places. |1. There is an error "Minimum stake is €1.00". "Place Bet" button is disabled.<br>2. There is an error "Maximum stake is €100.00". "Place Bet" button is disabled.<br>3. There is an error "Insufficient balance". "Place Bet" button is disabled.<br>4. Stake is applied, "Place Bet" button is available.|
 |6|Place a bet|Crit|Testing the main flow and covering Place a bet API|1. Make a selection, enter a stake within user's balance.<br>2. Press "Place Bet" button.<br>3. Check modal.<br>4. Close the modal.|1. Bet slip shows the total stake and potential payout. "Place Bet" button is unblocked.<br>2. "Place Bet" button is in loading state "Placing...". After that the bet placed, success receipt modal appears.<br>3. Modal contains: title "Bet Placed Successfully!", Bet ID, Match details, Selection, Stake, Odds at placement, Potential payout, Placement timestamp, Close button.<br>4. User returns to the main screen without active selection. The balance has decreased by the bet amount.|
 |7|Testing the filters|Low|Improve the usability of the interface. Inoperative filters reduce user satisfaction and complicate the process of finding the right match.|1. Select date range.<br>2. Select odds range.<br>3. Check the counter of displayed matches.|1. Check that match list shows matches from the selected date range (inclusive).<br>2. Check that match list shows matches from the selected odds range (inclusive).<br>3. The counter of displayed matches shows match count accoring to applied filter.|
+|8|Reset user's balance|Med|Checking endpoint functionality|1. Perform Reset balance API.<br>2. Perform Get balance API.|Request performed successfully and returned 200 OK with payload:<br>![Reset balance](img/reset_balance.jpg) <br>2. Request performed successfully and returned 200 OK with default balance after resetting.|
+
+I tried to cover all the APIs and the most important UI elements in such a small number of tests.
+I combined interface and API checks where possible, and added a separate check for the remaining API.
+
+Out of testing (due to lower priority):
+1. Detailed API testing
+2. Negative case
+3. Detailed filter's testing
